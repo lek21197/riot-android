@@ -744,7 +744,8 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
             // invalidate the current homeserver config
             mHomeserverConnectionConfig = null;
             // the account creation is not always supported so ensure that the dedicated button is always displayed.
-            mRegisterButton.setVisibility(View.VISIBLE);
+            // CK
+            // mRegisterButton.setVisibility(View.VISIBLE);
 
             if (checkFlowOnUpdate) {
                 checkFlows();
@@ -770,7 +771,9 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
             // invalidate the current homeserver config
             mHomeserverConnectionConfig = null;
             // the account creation is not always supported so ensure that the dedicated button is always displayed.
-            mRegisterButton.setVisibility(View.VISIBLE);
+
+            // CK
+            // mRegisterButton.setVisibility(View.VISIBLE);
 
             if (checkFlowOnUpdate) {
                 checkFlows();
@@ -1484,7 +1487,9 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
                                         }
                                     } else if (e.mStatus == 403) {
                                         // not supported by the server
-                                        mRegisterButton.setVisibility(View.GONE);
+
+                                        // CK
+                                        // mRegisterButton.setVisibility(View.GONE);
                                         mMode = MODE_LOGIN;
                                         refreshDisplay();
                                     }
@@ -1966,7 +1971,12 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
         mForgotValidateEmailButton.setVisibility(mMode == MODE_FORGOT_PASSWORD_WAITING_VALIDATION ? View.VISIBLE : View.GONE);
         mSubmitThreePidButton.setVisibility(mMode == MODE_ACCOUNT_CREATION_THREE_PID ? View.VISIBLE : View.GONE);
         mSkipThreePidButton.setVisibility(mMode == MODE_ACCOUNT_CREATION_THREE_PID && RegistrationManager.getInstance().canSkip() ? View.VISIBLE : View.GONE);
-        mHomeServerOptionLayout.setVisibility(mMode == MODE_ACCOUNT_CREATION_THREE_PID ? View.GONE : View.VISIBLE);
+
+        // CK
+        //mHomeServerOptionLayout.setVisibility(mMode == MODE_ACCOUNT_CREATION_THREE_PID ? View.GONE : View.VISIBLE);
+        mPasswordForgottenTxtView.setVisibility(View.INVISIBLE);
+        mHomeServerOptionLayout.setVisibility(View.INVISIBLE);
+        mRegisterButton.setVisibility(View.INVISIBLE);
 
         // update the button text to the current status
         // 1 - the user does not warn that he clicks on the email validation
@@ -2005,7 +2015,8 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
 
         // forgot password mode
         // the register and the login buttons are hidden
-        mRegisterButton.setVisibility(isForgotPasswordMode ? View.GONE : View.VISIBLE);
+        // CK
+        // mRegisterButton.setVisibility(isForgotPasswordMode ? View.GONE : View.VISIBLE);
         mLoginButton.setVisibility(isForgotPasswordMode ? View.GONE : View.VISIBLE);
 
         mForgotPasswordButton.setVisibility((mMode == MODE_FORGOT_PASSWORD) ? View.VISIBLE : View.GONE);

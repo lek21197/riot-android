@@ -1388,7 +1388,7 @@ public class VectorHomeActivity extends RiotAppCompatActivity implements SearchV
      */
     private void createRoom() {
         showWaitingView();
-        mSession.createRoom(new SimpleApiCallback<String>(VectorHomeActivity.this) {
+        mSession.createEncryptedRoom("m.megolm.v1.aes-sha2", new SimpleApiCallback<String>(VectorHomeActivity.this) {
             @Override
             public void onSuccess(final String roomId) {
                 waitingView.post(new Runnable() {

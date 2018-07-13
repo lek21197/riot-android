@@ -305,7 +305,7 @@ public class VectorRoomCreationActivity extends MXCActionBarActivity {
                         } else {
                             // direct message flow
                             showWaitingView();
-                            mSession.createDirectMessageRoom(mParticipants.get(0).mUserId, mCreateDirectMessageCallBack);
+                            mSession.createDirectMessageRoom(mParticipants.get(0).mUserId, "m.megolm.v1.aes-sha2", mCreateDirectMessageCallBack);
                         }
                     }
                 }
@@ -382,6 +382,7 @@ public class VectorRoomCreationActivity extends MXCActionBarActivity {
         }
 
         params.addParticipantIds(mSession.getHomeServerConfig(), ids);
+        params.addCryptoAlgorithm("m.megolm.v1.aes-sha2");
 
         mSession.createRoom(params, new SimpleApiCallback<String>(VectorRoomCreationActivity.this) {
             @Override

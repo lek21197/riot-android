@@ -16,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "im.vector"
+        applicationId "im.clearkeep"
         minSdkVersion 16
         targetSdkVersion 26
         // use the version code
@@ -88,7 +88,7 @@ android {
 
     productFlavors {
         app {
-            applicationId "im.vector.alpha"
+            applicationId "im.clearkeep"
             // use the version name
             versionCode rootProject.ext.versionCodeProp
             versionName rootProject.ext.versionNameProp
@@ -99,7 +99,7 @@ android {
         }
 
         appfdroid {
-            applicationId "im.vector.alpha"
+            applicationId "im.clearkeep.alpha"
             // use the version name
             versionCode rootProject.ext.versionCodeProp
             versionName rootProject.ext.versionNameProp

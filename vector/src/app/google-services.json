@@ -1,31 +1,27 @@
 {
   "project_info": {
-    "project_number": "912726360885",
-    "firebase_url": "https://vector-alpha.firebaseio.com",
-    "project_id": "vector-alpha",
-    "storage_bucket": "vector-alpha.appspot.com"
+    "project_number": "120880776194",
+    "firebase_url": "https://clearkeep-bf8f9.firebaseio.com",
+    "project_id": "clearkeep-bf8f9",
+    "storage_bucket": "clearkeep-bf8f9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:912726360885:android:448c9b63161abc9c",
+        "mobilesdk_app_id": "1:120880776194:android:8f9b076be13b06a5",
         "android_client_info": {
-          "package_name": "im.vector.alpha"
+          "package_name": "im.clearkeep"
         }
       },
       "oauth_client": [
         {
-          "client_id": "912726360885-rsae0i66rgqt6ivnudu1pv4tksg9i8b2.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "912726360885-e87n3jva9uoj4vbidvijq78ebg02asv2.apps.googleusercontent.com",
+          "client_id": "120880776194-22nns0ncv6g0l9k3gjt2osp3h2anri92.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAFZX8IhIfgzdOZvxDP_ISO5WYoU7jmQ5c"
+          "current_key": "AIzaSyAXklQxJBO8hXDCUzW3oCmKyYdvE1T74Vc"
         }
       ],
       "services": {

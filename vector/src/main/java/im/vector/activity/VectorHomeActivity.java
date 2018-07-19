@@ -207,6 +207,9 @@ public class VectorHomeActivity extends RiotAppCompatActivity implements SearchV
     @BindView(R.id.button_create_room)
     FloatingActionButton mFabCreateRoom;
 
+    @BindView(R.id.button_create_vc_room)
+    FloatingActionButton mFabCreateVCRoom;
+
     @BindView(R.id.button_join_room)
     FloatingActionButton mFabJoinRoom;
 
@@ -1439,6 +1442,61 @@ public class VectorHomeActivity extends RiotAppCompatActivity implements SearchV
     }
 
     /**
+     * Create a room and open the dedicated activity
+     */
+    private void createVCRoom() {
+        showWaitingView();
+        mSession.createRoom("Video Conference", (String)null, (String)null, new SimpleApiCallback<String>(VectorHomeActivity.this) {
+            @Override
+            public void onSuccess(final String roomId) {
+                waitingView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideWaitingView();
+
+                        Map<String, Object> params = new HashMap<>();
+                        params.put(VectorRoomActivity.EXTRA_MATRIX_ID, mSession.getMyUserId());
+                        params.put(VectorRoomActivity.EXTRA_ROOM_ID, roomId);
+                        params.put(VectorRoomActivity.EXTRA_EXPAND_ROOM_HEADER, true);
+                        CommonActivityUtils.goToRoomPage(VectorHomeActivity.this, mSession, params);
+                    }
+                });
+            }
+
+            private void onError(final String message) {
+                waitingView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (null != message) {
+                            Toast.makeText(VectorHomeActivity.this, message, Toast.LENGTH_LONG).show();
+                        }
+                        hideWaitingView();
+                    }
+                });
+            }
+
+            @Override
+            public void onNetworkError(Exception e) {
+                onError(e.getLocalizedMessage());
+            }
+
+            @Override
+            public void onMatrixError(final MatrixError e) {
+                if (MatrixError.M_CONSENT_NOT_GIVEN.equals(e.errcode)) {
+                    getConsentNotGivenHelper().displayDialog(e);
+                } else {
+                    onError(e.getLocalizedMessage());
+                }
+            }
+
+            @Override
+            public void onUnexpectedError(final Exception e) {
+                onError(e.getLocalizedMessage());
+            }
+        });
+    }
+
+    /**
      * Offer to join a room by alias or Id
      */
     private void joinARoom() {
@@ -2318,6 +2376,12 @@ public class VectorHomeActivity extends RiotAppCompatActivity implements SearchV
     void fabMenuCreateRoom() {
         mFloatingActionsMenu.collapse();
         createRoom();
+    }
+
+    @OnClick(R.id.button_create_vc_room)
+    void fabMenuCreateVCRoom() {
+        mFloatingActionsMenu.collapse();
+        createVCRoom();
     }
 
     @OnClick(R.id.button_join_room)

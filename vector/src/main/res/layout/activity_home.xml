@@ -147,6 +147,17 @@
                 tools:fab_colorPressed="@color/vector_fuchsia_color" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/button_create_vc_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_add_white"
+                app:fab_size="mini"
+                app:fab_title="Create video conference"
+                tools:fab_colorNormal="@color/vector_fuchsia_color"
+                tools:fab_colorPressed="@color/vector_fuchsia_color" />
+
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/button_join_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

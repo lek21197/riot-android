@@ -63,7 +63,7 @@ public class JitsiCallActivity extends RiotAppCompatActivity {
     /**
      * Base server URL
      */
-    private static final String JITSI_SERVER_URL = "https://jitsi.riot.im/";
+    private static final String JITSI_SERVER_URL = "https://meet.jit.si/";
 
     // permission request code
     private final static int CAN_DRAW_OVERLAY_REQUEST_CODE = 1234;

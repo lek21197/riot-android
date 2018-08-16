@@ -450,10 +450,10 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
         }
 
         // If home server url or identity server url are not the default ones, check the mUseCustomHomeServersCheckbox
-        if (!ServerUrlsRepository.INSTANCE.isDefaultHomeServerUrl(this, mHomeServerText.getText().toString())
-                || !ServerUrlsRepository.INSTANCE.isDefaultIdentityServerUrl(this, mIdentityServerText.getText().toString())) {
+        //if (!ServerUrlsRepository.INSTANCE.isDefaultHomeServerUrl(this, mHomeServerText.getText().toString())
+        //        || !ServerUrlsRepository.INSTANCE.isDefaultIdentityServerUrl(this, mIdentityServerText.getText().toString())) {
             mUseCustomHomeServersCheckbox.setChecked(true);
-        }
+        //}
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -528,6 +528,8 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
                 }
             }
         });
+
+        mIdentityServerText.setVisibility(View.INVISIBLE);
 
         // "forgot password?" handler
         mPasswordForgottenTxtView.setOnClickListener(new View.OnClickListener() {
@@ -744,8 +746,8 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
             // invalidate the current homeserver config
             mHomeserverConnectionConfig = null;
             // the account creation is not always supported so ensure that the dedicated button is always displayed.
-            // CK
-            // mRegisterButton.setVisibility(View.VISIBLE);
+
+            mRegisterButton.setVisibility(View.VISIBLE);
 
             if (checkFlowOnUpdate) {
                 checkFlows();
@@ -772,8 +774,7 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
             mHomeserverConnectionConfig = null;
             // the account creation is not always supported so ensure that the dedicated button is always displayed.
 
-            // CK
-            // mRegisterButton.setVisibility(View.VISIBLE);
+            mRegisterButton.setVisibility(View.VISIBLE);
 
             if (checkFlowOnUpdate) {
                 checkFlows();
@@ -1488,8 +1489,7 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
                                     } else if (e.mStatus == 403) {
                                         // not supported by the server
 
-                                        // CK
-                                        // mRegisterButton.setVisibility(View.GONE);
+                                        mRegisterButton.setVisibility(View.GONE);
                                         mMode = MODE_LOGIN;
                                         refreshDisplay();
                                     }
@@ -1975,7 +1975,7 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
         // CK
         //mHomeServerOptionLayout.setVisibility(mMode == MODE_ACCOUNT_CREATION_THREE_PID ? View.GONE : View.VISIBLE);
         mPasswordForgottenTxtView.setVisibility(View.INVISIBLE);
-        mHomeServerOptionLayout.setVisibility(View.INVISIBLE);
+        mHomeServerOptionLayout.setVisibility(View.VISIBLE);
         mRegisterButton.setVisibility(View.INVISIBLE);
 
         // update the button text to the current status
@@ -2015,8 +2015,8 @@ public class LoginActivity extends MXCActionBarActivity implements RegistrationM
 
         // forgot password mode
         // the register and the login buttons are hidden
-        // CK
-        // mRegisterButton.setVisibility(isForgotPasswordMode ? View.GONE : View.VISIBLE);
+
+        mRegisterButton.setVisibility(isForgotPasswordMode ? View.GONE : View.VISIBLE);
         mLoginButton.setVisibility(isForgotPasswordMode ? View.GONE : View.VISIBLE);
 
         mForgotPasswordButton.setVisibility((mMode == MODE_FORGOT_PASSWORD) ? View.VISIBLE : View.GONE);

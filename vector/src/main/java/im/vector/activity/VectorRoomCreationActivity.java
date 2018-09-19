@@ -98,7 +98,13 @@ public class VectorRoomCreationActivity extends MXCActionBarActivity {
 
         @Override
         public void onMatrixError(final MatrixError e) {
-            onError(e.getLocalizedMessage());
+            if (MatrixError.M_CONSENT_NOT_GIVEN.equals(e.errcode)) {
+                hideWaitingView();
+
+                getConsentNotGivenHelper().displayDialog(e);
+            } else {
+                onError(e.getLocalizedMessage());
+            }
         }
 
         @Override
@@ -384,7 +390,7 @@ public class VectorRoomCreationActivity extends MXCActionBarActivity {
         params.addParticipantIds(mSession.getHomeServerConfig(), ids);
         params.addCryptoAlgorithm("m.megolm.v1.aes-sha2");
 
-        mSession.createRoom(params, new SimpleApiCallback<String>(VectorRoomCreationActivity.this) {
+        mSession.createRoom(params, new ApiCallback<String>() {
             @Override
             public void onSuccess(final String roomId) {
                 runOnUiThread(new Runnable() {
@@ -417,7 +423,13 @@ public class VectorRoomCreationActivity extends MXCActionBarActivity {
 
             @Override
             public void onMatrixError(final MatrixError e) {
-                onError(e.getLocalizedMessage());
+                if (MatrixError.M_CONSENT_NOT_GIVEN.equals(e.errcode)) {
+                    hideWaitingView();
+
+                    getConsentNotGivenHelper().displayDialog(e);
+                } else {
+                    onError(e.getLocalizedMessage());
+                }
             }
 
             @Override

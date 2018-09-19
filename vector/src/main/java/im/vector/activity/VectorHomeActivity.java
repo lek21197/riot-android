@@ -1399,7 +1399,7 @@ public class VectorHomeActivity extends VectorAppCompatActivity implements Searc
         mSession.createEncryptedRoom("m.megolm.v1.aes-sha2", new SimpleApiCallback<String>(VectorHomeActivity.this) {
             @Override
             public void onSuccess(final String roomId) {
-                waitingView.post(new Runnable() {
+                mToolbar.post(new Runnable() {
                     @Override
                     public void run() {
                         hideWaitingView();
@@ -1414,7 +1414,7 @@ public class VectorHomeActivity extends VectorAppCompatActivity implements Searc
             }
 
             private void onError(final String message) {
-                waitingView.post(new Runnable() {
+                mToolbar.post(new Runnable() {
                     @Override
                     public void run() {
                         if (null != message) {
